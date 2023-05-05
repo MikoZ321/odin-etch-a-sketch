@@ -6,3 +6,9 @@ for (let i = 0; i < gridSize * gridSize; i++) {
     square.classList.add("square");
     container.appendChild(square);
 }
+
+const squares = document.querySelectorAll('.square');
+
+squares.forEach(square => square.addEventListener('mouseover', function (e) {
+    square.classList.add("black");
+}));
