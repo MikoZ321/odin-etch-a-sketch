@@ -1,6 +1,8 @@
 const DEFAULT_SIZE = 16;
+const DEFAULT_MODE = "draw";
 
 let currentSize = DEFAULT_SIZE;
+let currentMode = DEFAULT_MODE;
 
 const container = document.querySelector(".container");
 const sizeBtn = document.querySelector("#size");
@@ -30,8 +32,18 @@ function makeGrid (gridSize) {
 
 function removeGrid () {
     const grid = document.querySelector('.grid');
-
     container.removeChild(grid);
+}
+
+function changeColor (currentMode) {
+    if (currentMode == "draw") {
+        const squares = document.querySelectorAll('.square');
+
+        squares.forEach(square => square.addEventListener('mouseover', function () {
+            if (mouseDown == false) return;
+            square.classList.add("hovered");
+        }));
+    }
 }
 
 clearBtn.addEventListener('click', function () {
@@ -39,12 +51,7 @@ clearBtn.addEventListener('click', function () {
 
     makeGrid(+currentSize);
 
-    const squares = document.querySelectorAll('.square');
-
-    squares.forEach(square => square.addEventListener('mouseover', function () {
-        if (mouseDown == false) return;
-        square.classList.add("hovered");
-    }));
+    changeColor(currentMode);
 });
 
 sizeBtn.addEventListener('click', function (e) {
@@ -58,18 +65,8 @@ sizeBtn.addEventListener('click', function (e) {
 
     makeGrid(+currentSize);
 
-    const squares = document.querySelectorAll('.square');
-
-    squares.forEach(square => square.addEventListener('mouseover', function () {
-        if (mouseDown == false) return;
-        square.classList.add("hovered");
-    }));
+    changeColor(currentMode);
 });
+
 makeGrid(currentSize);
-
-const squares = document.querySelectorAll('.square');
-
-squares.forEach(square => square.addEventListener('mouseover', function () {
-    if (mouseDown == false) return;
-    square.classList.add("hovered");
-}));
+changeColor(currentMode);
