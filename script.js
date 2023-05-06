@@ -27,8 +27,24 @@ function makeGrid (gridSize) {
 
     container.insertBefore(grid, controlsRight);
 }
+
+function clearGrid () {
+    const grid = document.querySelector('.grid');
+
+    container.removeChild(grid);
+
+    makeGrid(+currentSize);
+
+    const squares = document.querySelectorAll('.square');
+
+    squares.forEach(square => square.addEventListener('mouseover', function () {
+        if (mouseDown == false) return;
+        square.classList.add("hovered");
+    }));
+}
+
 clearBtn.addEventListener('click', function () {
-    console.log("clearing");
+    clearGrid();
 });
 
 sizeBtn.addEventListener('click', function (e) {
@@ -49,7 +65,7 @@ sizeBtn.addEventListener('click', function (e) {
     squares.forEach(square => square.addEventListener('mouseover', function () {
         if (mouseDown == false) return;
         square.classList.add("hovered");
-}));
+    }));
 });
 makeGrid(currentSize);
 
