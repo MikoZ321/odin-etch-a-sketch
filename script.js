@@ -89,6 +89,9 @@ colorBtn.addEventListener('click', function () {
 });
 
 rainbowBtn.addEventListener('click', function () {
+    const colors = document.querySelectorAll(".color");
+
+    colors.forEach(color => color.classList.remove("selected"));
     colorBtn.classList.remove("activated");
     rainbowBtn.classList.add("activated");
     setCurrentMode("rainbow");
