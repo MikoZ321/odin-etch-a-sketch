@@ -17,3 +17,5 @@ During this project I had to use the following skills:
 -creating and using event listeners
 
 -manipulating attributes and CSS with JS
+
+-researching topics I have not yet learned
