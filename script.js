@@ -20,13 +20,14 @@ document.body.onmouseup = () => (mouseDown = false)
 
 function setCurrentMode (newMode) {
     currentMode = newMode;
-    removeGrid();
-    makeGrid(currentSize);
     changeColor(currentMode);
 }
 
 function setCurrentColor (e) {
     currentColor = e.target.dataset.color;
+    setCurrentMode("color");
+    rainbowBtn.classList.remove("activated");
+    colorBtn.classList.add("activated");
     changeColor(currentMode);
 }
 
