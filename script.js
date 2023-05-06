@@ -1,5 +1,7 @@
 const DEFAULT_SIZE = 16;
 
+let currentSize = DEFAULT_SIZE;
+
 const container = document.querySelector(".container");
 const sizeBtn = document.querySelector("#size");
 const clearBtn = document.querySelector("#clear");
@@ -34,13 +36,13 @@ sizeBtn.addEventListener('click', function (e) {
 
     container.removeChild(grid);
 
-    let gridSize = prompt("Enter grid side length:");
+    currentSize = prompt("Enter grid side length:");
 
-    while (+gridSize <= 0 || +gridSize > 100) {
-        gridSize = prompt("Grid side length must be between 0 and 100");
+    while (+currentSize <= 0 || +currentSize > 100) {
+        currentSize = prompt("Grid side length must be between 0 and 100");
     }
 
-    makeGrid(+gridSize);
+    makeGrid(+currentSize);
 
     const squares = document.querySelectorAll('.square');
 
@@ -49,7 +51,7 @@ sizeBtn.addEventListener('click', function (e) {
         square.classList.add("hovered");
 }));
 });
-makeGrid(DEFAULT_SIZE);
+makeGrid(currentSize);
 
 const squares = document.querySelectorAll('.square');
 
