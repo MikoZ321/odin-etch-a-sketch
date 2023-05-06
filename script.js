@@ -90,8 +90,13 @@ clearBtn.addEventListener('click', function () {
     makeGrid(+currentSize);
     changeColor(currentMode);
 }); */
-sizeSlider.oninput = function () {
-    console.log("range change");
+sizeSlider.oninput = function (e) {
+    currentSize = e.target.value;
+
+    removeGrid();
+    makeGrid(currentSize);
+
+    changeColor(currentMode);
 }
 
 makeGrid(currentSize);
