@@ -69,6 +69,8 @@ function changeColor (currentMode) {
     }));
 }
 colors.forEach(color => color.addEventListener('click', function (e) {
+    colors.forEach(color => color.classList.remove("selected"));
+    color.classList.add("selected");
     setCurrentColor(e);
     changeColor(currentMode);
 }));

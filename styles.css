@@ -1,6 +1,7 @@
 :root {
     --background-color: #eee;
     --text-color: #222831;
+    --selection-color: #0EB1D2;
     overflow-x: hidden;
 }
 * {
@@ -176,4 +177,7 @@ footer {
 }
 #copyright p a {
     text-decoration: none;
+}
+.selected {
+    border: 2px solid var(--selection-color);
 }
