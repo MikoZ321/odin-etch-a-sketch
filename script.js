@@ -1,6 +1,8 @@
 const DEFAULT_SIZE = 16;
 
 const container = document.querySelector(".container");
+const sizeBtn = document.querySelector("#size");
+const clearBtn = document.querySelector("#clear");
 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
@@ -23,7 +25,9 @@ function makeGrid (gridSize) {
 
     container.insertBefore(grid, controlsRight);
 }
-const sizeBtn = document.querySelector("button");
+clearBtn.addEventListener('click', function () {
+    console.log("clearing");
+});
 
 sizeBtn.addEventListener('click', function (e) {
     const grid = document.querySelector(".grid");
