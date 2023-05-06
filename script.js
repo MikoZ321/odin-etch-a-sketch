@@ -16,13 +16,15 @@ const sizeBtn = document.querySelector("button");
 sizeBtn.addEventListener('click', function (e) {
     const grid = document.querySelector(".grid");
 
+    container.removeChild(grid);
+
     let gridSize = prompt("Enter grid side length:");
 
-    while (gridSize <= 0 || gridSize > 100) {
+    while (+gridSize <= 0 || +gridSize > 100) {
         gridSize = prompt("Grid side length must be between 0 and 100");
     }
 
-    makeGrid(gridSize);
+    makeGrid(+gridSize);
 });
 makeGrid(16);
 
