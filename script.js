@@ -28,10 +28,14 @@ function makeGrid (gridSize) {
     container.insertBefore(grid, controlsRight);
 }
 
-function clearGrid () {
+function removeGrid () {
     const grid = document.querySelector('.grid');
 
     container.removeChild(grid);
+}
+
+clearBtn.addEventListener('click', function () {
+    removeGrid();
 
     makeGrid(+currentSize);
 
@@ -41,16 +45,10 @@ function clearGrid () {
         if (mouseDown == false) return;
         square.classList.add("hovered");
     }));
-}
-
-clearBtn.addEventListener('click', function () {
-    clearGrid();
 });
 
 sizeBtn.addEventListener('click', function (e) {
-    const grid = document.querySelector(".grid");
-
-    container.removeChild(grid);
+    removeGrid();
 
     currentSize = prompt("Enter grid side length:");
 
