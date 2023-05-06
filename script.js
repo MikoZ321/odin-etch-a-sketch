@@ -18,6 +18,9 @@ document.body.onmouseup = () => (mouseDown = false)
 
 function setCurrentMode (newMode) {
     currentMode = newMode;
+    removeGrid();
+    makeGrid(currentSize);
+    changeColor(currentMode);
 }
 
 function makeGrid (gridSize) {
@@ -48,13 +51,13 @@ function changeColor (currentMode) {
 
     squares.forEach(square => square.addEventListener('mouseover', function () {
         if (mouseDown == false) return;
-        if (currentMode == "color") square.style.backgroundColor = currentColor;
-        else if (currentMode == "rainbow") {
+        if (currentMode == "rainbow") {
             const randomR = Math.floor(Math.random() * 256);
             const randomG = Math.floor(Math.random() * 256);
             const randomB = Math.floor(Math.random() * 256);
             square.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
         }
+        else if (currentMode == "color") square.style.backgroundColor = currentColor;
     }));
 }
 
