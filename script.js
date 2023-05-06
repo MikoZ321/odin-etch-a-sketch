@@ -62,10 +62,14 @@ function changeColor (currentMode) {
 }
 
 colorBtn.addEventListener('click', function () {
+    rainbowBtn.classList.remove("activated");
+    colorBtn.classList.add("activated");
     setCurrentMode("color");
 });
 
 rainbowBtn.addEventListener('click', function () {
+    colorBtn.classList.remove("activated");
+    rainbowBtn.classList.add("activated");
     setCurrentMode("rainbow");
 });
 
