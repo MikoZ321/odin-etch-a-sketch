@@ -1,16 +1,24 @@
 const DEFAULT_SIZE = 16;
-const DEFAULT_MODE = "draw";
+const DEFAULT_MODE = "color";
+const DEFAULT_COLOR = "#222831";
 
 let currentSize = DEFAULT_SIZE;
 let currentMode = DEFAULT_MODE;
+let currentColor = DEFAULT_COLOR;
 
 const container = document.querySelector(".container");
-const sizeBtn = document.querySelector("#size");
+const colorBtn = document.querySelector("#color");
+const rainbowBtn = document.querySelector("#rainbow");
 const clearBtn = document.querySelector("#clear");
+const sizeBtn = document.querySelector("#size");
 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
+
+function setCurrentMode (newMode) {
+    currentMode = newMode;
+}
 
 function makeGrid (gridSize) {
     const controlsRight = document.querySelector('.right');
@@ -36,21 +44,31 @@ function removeGrid () {
 }
 
 function changeColor (currentMode) {
-    if (currentMode == "draw") {
-        const squares = document.querySelectorAll('.square');
+    const squares = document.querySelectorAll('.square');
 
-        squares.forEach(square => square.addEventListener('mouseover', function () {
-            if (mouseDown == false) return;
-            square.classList.add("hovered");
-        }));
-    }
+    squares.forEach(square => square.addEventListener('mouseover', function () {
+        if (mouseDown == false) return;
+        if (currentMode == "color") square.style.backgroundColor = currentColor;
+        else if (currentMode == "rainbow") {
+            const randomR = Math.floor(Math.random() * 256);
+            const randomG = Math.floor(Math.random() * 256);
+            const randomB = Math.floor(Math.random() * 256);
+            square.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+        }
+    }));
 }
+
+colorBtn.addEventListener('click', function () {
+    setCurrentMode("color");
+});
+
+rainbowBtn.addEventListener('click', function () {
+    setCurrentMode("rainbow");
+});
 
 clearBtn.addEventListener('click', function () {
     removeGrid();
-
     makeGrid(+currentSize);
-
     changeColor(currentMode);
 });
 
@@ -58,13 +76,11 @@ sizeBtn.addEventListener('click', function (e) {
     removeGrid();
 
     currentSize = prompt("Enter grid side length:");
-
     while (+currentSize <= 0 || +currentSize > 100) {
         currentSize = prompt("Grid side length must be between 0 and 100");
     }
 
     makeGrid(+currentSize);
-
     changeColor(currentMode);
 });
 

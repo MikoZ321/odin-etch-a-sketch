@@ -37,9 +37,6 @@ body {
 .square {
     user-select: none;
 }
-.hovered {
-    background-color: var(--text-color);
-}
 .controls {
     width: 100px;
     height: 500px;
