@@ -7,7 +7,7 @@ let currentMode = DEFAULT_MODE;
 let currentColor = DEFAULT_COLOR;
 
 const container = document.querySelector(".container");
-const otherTile = document.querySelector("#other");
+const colors = document.querySelectorAll(".color");
 const otherInput = document.querySelector("#colorInput");
 const colorBtn = document.querySelector("#color");
 const rainbowBtn = document.querySelector("#rainbow");
@@ -22,6 +22,11 @@ function setCurrentMode (newMode) {
     currentMode = newMode;
     removeGrid();
     makeGrid(currentSize);
+    changeColor(currentMode);
+}
+
+function setCurrentColor (e) {
+    currentColor = e.target.dataset.color;
     changeColor(currentMode);
 }
 
@@ -62,9 +67,16 @@ function changeColor (currentMode) {
         else if (currentMode == "color") square.style.backgroundColor = currentColor;
     }));
 }
+colors.forEach(color => color.addEventListener('click', function (e) {
+    setCurrentColor(e);
+    changeColor(currentMode);
+}));
 
 otherInput.addEventListener('input', function (e) {
+    const otherTile = document.querySelector("#other");
     otherTile.style.backgroundColor = e.target.value;
+    otherTile.setAttribute("data-color", e.target.value);
+    changeColor(currentMode);
 });
 
 colorBtn.addEventListener('click', function () {
@@ -93,7 +105,6 @@ sizeSlider.oninput = function (e) {
 
     removeGrid();
     makeGrid(currentSize);
-
     changeColor(currentMode);
 }
 
