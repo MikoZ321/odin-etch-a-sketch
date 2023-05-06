@@ -83,6 +83,19 @@ otherInput.addEventListener('input', function (e) {
 });
 
 colorBtn.addEventListener('click', function () {
+    if (currentColor == "#222831") {
+        const lastColor = document.querySelector("#fakeBlack");
+        lastColor.classList.add("selected");
+    }
+    else if (currentColor != 'red' && currentColor != 'blue' && currentColor != 'green' && currentColor != 'yellow' && currentColor != 'white') {
+        const lastColor = document.querySelector("#other");
+        lastColor.classList.add("selected");
+    }
+    else {
+        const lastColor = document.querySelector(`#${currentColor}`);
+        lastColor.classList.add("selected");
+    }
+
     rainbowBtn.classList.remove("activated");
     colorBtn.classList.add("activated");
     setCurrentMode("color");
@@ -93,6 +106,7 @@ rainbowBtn.addEventListener('click', function () {
 
     colors.forEach(color => color.classList.remove("selected"));
     colorBtn.classList.remove("activated");
+
     rainbowBtn.classList.add("activated");
     setCurrentMode("rainbow");
 });
