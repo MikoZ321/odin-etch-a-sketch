@@ -97,3 +97,55 @@ body {
     background: var(--text-color);
     cursor: pointer;
 }
+#colorContainer {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#colorTiles {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#black {
+    background-color: var(--text-color);
+}
+#red {
+    background-color: red;
+}
+#blue {
+    background-color: blue;
+}
+#green {
+    background-color: green;
+}
+#yellow {
+    background-color: yellow;
+}
+#white {
+    background-color: white;
+}
+.color {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+    background-color: black;
+}
+.color:hover {
+    transform: scale(1.1);
+}
+#colorOther {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+#colorInput {
+    height: 25px;
+    width: calc(180px - 30px);
+}

@@ -7,6 +7,8 @@ let currentMode = DEFAULT_MODE;
 let currentColor = DEFAULT_COLOR;
 
 const container = document.querySelector(".container");
+const otherTile = document.querySelector("#other");
+const otherInput = document.querySelector("#colorInput");
 const colorBtn = document.querySelector("#color");
 const rainbowBtn = document.querySelector("#rainbow");
 const clearBtn = document.querySelector("#clear");
@@ -61,6 +63,10 @@ function changeColor (currentMode) {
     }));
 }
 
+otherInput.addEventListener('input', function (e) {
+    otherTile.style.backgroundColor = e.target.value;
+});
+
 colorBtn.addEventListener('click', function () {
     rainbowBtn.classList.remove("activated");
     colorBtn.classList.add("activated");
@@ -79,17 +85,6 @@ clearBtn.addEventListener('click', function () {
     changeColor(currentMode);
 });
 
-/* sizeBtn.addEventListener('click', function (e) {
-    removeGrid();
-
-    currentSize = prompt("Enter grid side length:");
-    while (+currentSize <= 0 || +currentSize > 100) {
-        currentSize = prompt("Grid side length must be between 0 and 100");
-    }
-
-    makeGrid(+currentSize);
-    changeColor(currentMode);
-}); */
 sizeSlider.oninput = function (e) {
     currentSize = e.target.value;
 
