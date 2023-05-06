@@ -93,11 +93,17 @@ clearBtn.addEventListener('click', function () {
 sizeSlider.oninput = function (e) {
     currentSize = e.target.value;
 
+    const sizeText = document.querySelector("#sizeText");
+    sizeText.textContent = `${currentSize} x ${currentSize}`;
+
     removeGrid();
     makeGrid(currentSize);
 
     changeColor(currentMode);
 }
+
+const sizeText = document.querySelector("#sizeText");
+sizeText.textContent = `${currentSize} x ${currentSize}`;
 
 makeGrid(currentSize);
 changeColor(currentMode);
