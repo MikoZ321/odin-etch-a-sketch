@@ -10,7 +10,7 @@ const container = document.querySelector(".container");
 const colorBtn = document.querySelector("#color");
 const rainbowBtn = document.querySelector("#rainbow");
 const clearBtn = document.querySelector("#clear");
-const sizeBtn = document.querySelector("#size");
+const sizeSlider = document.querySelector("#size");
 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
@@ -79,7 +79,7 @@ clearBtn.addEventListener('click', function () {
     changeColor(currentMode);
 });
 
-sizeBtn.addEventListener('click', function (e) {
+/* sizeBtn.addEventListener('click', function (e) {
     removeGrid();
 
     currentSize = prompt("Enter grid side length:");
@@ -89,7 +89,10 @@ sizeBtn.addEventListener('click', function (e) {
 
     makeGrid(+currentSize);
     changeColor(currentMode);
-});
+}); */
+sizeSlider.oninput = function () {
+    console.log("range change");
+}
 
 makeGrid(currentSize);
 changeColor(currentMode);
