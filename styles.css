@@ -1,32 +1,46 @@
+:root {
+    --background-color: #eee;
+    --text-color: #222831;
+}
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Helvetica, sans-serif;
+    color: var(--text-color);
 }
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: var(--background-color);
+}
+#title {
+    font-size: 4rem;
+    padding: 2rem 2rem;
+
 }
 .container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 .grid {
-    padding-top: 100px;
     display: flex;
     flex-wrap: wrap;
-    width: 800px;
-    height: 900px;
+    width: 720px;
+    height: 720px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 3px #ddd;
 }
 .square {
-    border: 1px solid black;
+    user-select: none;
 }
-.black {
-    background-color: black;
-    color: black;
+.hovered {
+    background-color: var(--text-color);
+}
+.controls {
+    width: 100px;
+    height: 500px;
 }

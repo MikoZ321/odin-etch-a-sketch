@@ -1,8 +1,17 @@
+const DEFAULT_SIZE = 16;
+
 const container = document.querySelector(".container");
+
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
 function makeGrid (gridSize) {
+    const controlsRight = document.querySelector('.right');
+
     const grid = document.createElement('div');
     grid.classList.add("grid");
-    let squareSide = 800 / gridSize;
+    let squareSide = 720 / gridSize;
 
     for (let i = 0; i < gridSize * gridSize; i++) {
         const square = document.createElement('div');
@@ -12,7 +21,7 @@ function makeGrid (gridSize) {
         grid.appendChild(square);
     }
 
-    container.appendChild(grid);
+    container.insertBefore(grid, controlsRight);
 }
 const sizeBtn = document.querySelector("button");
 
@@ -28,17 +37,19 @@ sizeBtn.addEventListener('click', function (e) {
     }
 
     makeGrid(+gridSize);
-    
+
     const squares = document.querySelectorAll('.square');
 
     squares.forEach(square => square.addEventListener('mouseover', function () {
-    square.classList.add("black");
+        if (mouseDown == false) return;
+        square.classList.add("hovered");
 }));
 });
-makeGrid(16);
+makeGrid(DEFAULT_SIZE);
 
 const squares = document.querySelectorAll('.square');
 
 squares.forEach(square => square.addEventListener('mouseover', function () {
-    square.classList.add("black");
+    if (mouseDown == false) return;
+    square.classList.add("hovered");
 }));
